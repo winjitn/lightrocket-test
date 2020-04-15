@@ -8,6 +8,7 @@ export default (props) => {
 
   useEffect(() => {
     if (imgContainer.current.classList.contains("masonry")) {
+      //initialise library for masonry
       Macy({
         container: ".masonry",
         columns: 1,

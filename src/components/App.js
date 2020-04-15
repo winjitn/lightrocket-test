@@ -8,21 +8,18 @@ import fetchUser from "../utils/fetchUser";
 
 function App() {
   const [user, setUser] = useState({});
-  const [error, setError] = useState();
 
+  //get user with params
   let userName = matchPath(window.location.pathname, {
     path: "/:user",
     strict: false,
   }).params.user;
 
   useEffect(() => {
-    fetchUser(userName, setError, setUser);
+    fetchUser(userName, setUser);
   }, []);
 
-  if (error) {
-    return <div className="center">{JSON.stringify(error)}</div>;
-  }
-
+  //render user or error
   switch (user.statusCode) {
     case 200: {
       return (
@@ -45,11 +42,8 @@ function App() {
         </div>
       );
     }
-    case 404: {
-      return <div className="center">User not found</div>;
-    }
     default: {
-      return null;
+      return <div className="center">{JSON.stringify(user)}</div>;
     }
   }
 }
