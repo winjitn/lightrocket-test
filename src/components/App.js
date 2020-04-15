@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from "./Home";
@@ -12,9 +12,12 @@ function App() {
   const userState = {
     user: user,
     setUser: setUser,
-    error: error,
     setError: setError,
   };
+
+  if (error) {
+    return <div className="center">{JSON.stringify(error)}</div>;
+  }
 
   return (
     <div>

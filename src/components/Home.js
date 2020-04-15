@@ -10,24 +10,22 @@ export default (props) => {
   useEffect(() => {
     fetchUser(props);
 
-    if (props.user.statusCode) {
+    if (props.user.statusCode === 200) {
       if (imgContainer.current.classList.contains("masonry")) {
         Macy({
           container: ".masonry",
-          columns: 3,
+          columns: 1,
           margin: 4,
+          mobileFirst: true,
           breakAt: {
-            900: 2,
-            500: 1,
+            900: 3,
+            500: 2,
           },
         });
       }
     }
-  }, [props.user]);
+  }, [props]);
 
-  if (props.error) {
-    return <div className="center">{JSON.stringify(props.error)}</div>;
-  }
   switch (props.user.statusCode) {
     case 200: {
       const { imageLayout, images } = props.user.data.homePage;
