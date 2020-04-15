@@ -19,6 +19,7 @@ const Nav = (props) => {
               </li>
               <li>
                 <NavLink
+                  exact
                   activeClassName="link-active"
                   className="nav-item"
                   to={`/${user}`}
