@@ -1,12 +1,10 @@
 import axios from "axios";
 
-export default async (props) => {
-  if (!props.user.statusCode) {
-    try {
-      const res = await axios.get(`/prod?user=${props.match.params.user}`);
-      props.setUser(res.data);
-    } catch (err) {
-      props.setError(err);
-    }
+export default async (userName, setError, setUser) => {
+  try {
+    const res = await axios.get(`/prod?user=${userName}`);
+    setUser(res.data);
+  } catch (err) {
+    setError(err);
   }
 };
