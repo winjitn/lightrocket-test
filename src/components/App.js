@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from "./Home";
 import About from "./About";
+import Nav from "./Nav";
 
 function App() {
   const [user, setUser] = useState({});
@@ -18,6 +19,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+        <Nav user={user} />
         <Switch>
           <Route
             exact

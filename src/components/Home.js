@@ -10,9 +10,9 @@ export default (props) => {
   useEffect(() => {
     fetchUser(props);
 
-    if (imgContainer.current) {
+    if (props.user.statusCode) {
       if (imgContainer.current.classList.contains("masonry")) {
-        var macy = Macy({
+        Macy({
           container: ".masonry",
           columns: 3,
           margin: 4,
@@ -35,7 +35,12 @@ export default (props) => {
       return (
         <div className={`${imageLayout} ui container`} ref={imgContainer}>
           {images.map((image) => (
-            <img key={image} className="homepage-img" src={image} alt="image" />
+            <img
+              key={image}
+              className="homepage-img"
+              src={image}
+              alt="gallery"
+            />
           ))}
         </div>
       );

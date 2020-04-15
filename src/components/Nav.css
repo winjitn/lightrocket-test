@@ -1,0 +1,41 @@
+#navbar {
+  margin: 20px 0;
+}
+
+#navbar ul {
+  padding: 0;
+  height: 30px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-item {
+  padding: 15px;
+  line-height: 30px;
+  margin: 0 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.nav-item:hover,
+.link-active {
+  color: rgb(82, 73, 206);
+}
+
+#navbar ul.left {
+  flex-direction: row-reverse;
+}
+
+#navbar ul.right {
+  flex-direction: row;
+}
+
+.logo {
+  font-size: large;
+}
+
+.logo:hover {
+  color: black;
+}
