@@ -13,10 +13,11 @@ function App() {
   let userName = matchPath(window.location.pathname, {
     path: "/:user",
     strict: false,
-  }).params.user;
+  });
 
   useEffect(() => {
-    fetchUser(userName, setUser);
+    //condition to not crash at base URL
+    if (userName !== null) fetchUser(userName.params.user, setUser);
   }, []);
 
   //render user or error
@@ -25,7 +26,7 @@ function App() {
       return (
         <div>
           <BrowserRouter>
-            <Nav user={user} userName={userName} />
+            <Nav user={user} userName={userName.params.user} />
             <Switch>
               <Route
                 exact
@@ -43,7 +44,12 @@ function App() {
       );
     }
     default: {
-      return <div className="center">{JSON.stringify(user)}</div>;
+      return (
+        //check to not show empty bracket
+        <div className="center">
+          {Object.values(user).length === 0 ? null : JSON.stringify(user)}
+        </div>
+      );
     }
   }
 }
